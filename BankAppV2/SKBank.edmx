@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище SkillDBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CashAccounts">
+          <Key>
+            <PropertyRef Name="NumCashAcc" />
+          </Key>
+          <Property Name="NumCashAcc" Type="nvarchar" MaxLength="16" Nullable="false" />
+          <Property Name="NumClientPassport" Type="nvarchar" MaxLength="12" />
+          <Property Name="NumClientINN" Type="nvarchar" MaxLength="12" />
+          <Property Name="AccFinance" Type="money" Nullable="false" />
+          <Property Name="TypeAcc" Type="nchar" MaxLength="15" Nullable="false" />
+          <Property Name="PeriodAcc" Type="datetime" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Passport" />
+          </Key>
+          <Property Name="FName" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="LName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="BrthDay" Type="date" Nullable="false" />
+          <Property Name="Passport" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Finance" Type="money" />
+          <Property Name="BankRating" Type="int" Nullable="false" />
+          <Property Name="ClStatus" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="WorkPlace" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ActivLevel" Type="int" Nullable="false" />
+          <Property Name="FrstTrans" Type="time" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="INN" />
+          </Key>
+          <Property Name="CompName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDay" Type="date" Nullable="false" />
+          <Property Name="INN" Type="nvarchar" MaxLength="12" Nullable="false" />
+          <Property Name="Finance" Type="money" />
+          <Property Name="BankRating" Type="int" Nullable="false" />
+          <Property Name="ClStatus" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Adress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ActivLevel" Type="int" Nullable="false" />
+          <Property Name="FirstTrans" Type="time" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="Хранилище SkillDBModelContainer">
+          <EntitySet Name="CashAccounts" EntityType="Self.CashAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SkillDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CashAccounts">
+          <Key>
+            <PropertyRef Name="NumCashAcc" />
+          </Key>
+          <Property Name="NumCashAcc" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumClientPassport" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="NumClientINN" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="AccFinance" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="TypeAcc" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PeriodAcc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="Passport" />
+          </Key>
+          <Property Name="FName" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BrthDay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Passport" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Finance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BankRating" Type="Int32" Nullable="false" />
+          <Property Name="ClStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WorkPlace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivLevel" Type="Int32" Nullable="false" />
+          <Property Name="FrstTrans" Type="Time" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="INN" />
+          </Key>
+          <Property Name="CompName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDay" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="INN" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Finance" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BankRating" Type="Int32" Nullable="false" />
+          <Property Name="ClStatus" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Adress" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActivLevel" Type="Int32" Nullable="false" />
+          <Property Name="FirstTrans" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityContainer Name="SkillDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CashAccounts" EntityType="Self.CashAccounts" />
+          <EntitySet Name="Client" EntityType="Self.Client" />
+          <EntitySet Name="Company" EntityType="Self.Company" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SkillDBModelContainer" CdmEntityContainer="SkillDBEntities">
+          <EntitySetMapping Name="CashAccounts">
+            <EntityTypeMapping TypeName="SkillDBModel.CashAccounts">
+              <MappingFragment StoreEntitySet="CashAccounts">
+                <ScalarProperty Name="NumCashAcc" ColumnName="NumCashAcc" />
+                <ScalarProperty Name="NumClientPassport" ColumnName="NumClientPassport" />
+                <ScalarProperty Name="NumClientINN" ColumnName="NumClientINN" />
+                <ScalarProperty Name="AccFinance" ColumnName="AccFinance" />
+                <ScalarProperty Name="TypeAcc" ColumnName="TypeAcc" />
+                <ScalarProperty Name="PeriodAcc" ColumnName="PeriodAcc" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Client">
+            <EntityTypeMapping TypeName="SkillDBModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="BrthDay" ColumnName="BrthDay" />
+                <ScalarProperty Name="Passport" ColumnName="Passport" />
+                <ScalarProperty Name="Finance" ColumnName="Finance" />
+                <ScalarProperty Name="BankRating" ColumnName="BankRating" />
+                <ScalarProperty Name="ClStatus" ColumnName="ClStatus" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="WorkPlace" ColumnName="WorkPlace" />
+                <ScalarProperty Name="ActivLevel" ColumnName="ActivLevel" />
+                <ScalarProperty Name="FrstTrans" ColumnName="FrstTrans" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="SkillDBModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="CompName" ColumnName="CompName" />
+                <ScalarProperty Name="CreateDay" ColumnName="CreateDay" />
+                <ScalarProperty Name="INN" ColumnName="INN" />
+                <ScalarProperty Name="Finance" ColumnName="Finance" />
+                <ScalarProperty Name="BankRating" ColumnName="BankRating" />
+                <ScalarProperty Name="ClStatus" ColumnName="ClStatus" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="ActivLevel" ColumnName="ActivLevel" />
+                <ScalarProperty Name="FirstTrans" ColumnName="FirstTrans" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
